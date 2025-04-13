@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-response = requests.get("weblink.com")
+response = requests.get("https://www.scrapethissite.com/pages/simple/")
 soup = BeautifulSoup(response.text, 'html.parser')
 
 # print(response.status_code)
@@ -16,16 +16,16 @@ country_blocks = soup.find_all("div", class_ = "col-md-4 country")
 res = []
 for block in country_blocks:
   name_element = block.find("h3", class_ = "country-name")
-  country_name = name_element.get_text(strip = True))
+  country_name = name_element.get_text(strip = True)
 
   capital_element = block.find("span", class_ = "country-capital")
-  capital_name = capital_element.get_text(strip = True))
+  capital_name = capital_element.get_text(strip = True)
 
   population_element = block.find("span", class_ = "country-population")
-  population_count = population_element.get_text(strip = True))
+  population_count = population_element.get_text(strip = True)
 
   area_element = block.find("span", class_ = "country-area")
-  area_total = area_element.get_text(strip = True))
+  area_total = area_element.get_text(strip = True)
 
   res.append({"name":country_name,"capital":capital_name,"population":population_count,"area":area_total})
 
@@ -44,4 +44,5 @@ with open("countries.csv","w",newline = "", encoding = "utf-8") as csvfile:
   writer.writeheader()
   for item in res:
     writer.writerow(item)
+
 
