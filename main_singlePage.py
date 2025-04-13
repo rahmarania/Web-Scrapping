@@ -1,3 +1,5 @@
+# in this case we want to scrap country data
+
 import requests
 from bs4 import BeautifulSoup
 import csv
