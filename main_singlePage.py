@@ -1,10 +1,9 @@
 # in this case we want to scrap country data
-
 import requests
 from bs4 import BeautifulSoup
 import csv
 
-response = response.get("weblink.com")
+response = requests.get("weblink.com")
 soup = BeautifulSoup(response.text, 'html.parser')
 
 # print(response.status_code)
@@ -28,7 +27,7 @@ for block in country_blocks:
   area_element = block.find("span", class_ = "country-area")
   area_total = area_element.get_text(strip = True))
 
-  result.append({"name":country_name,"capital":capital_name,"population":population_count,"area":area_total})
+  res.append({"name":country_name,"capital":capital_name,"population":population_count,"area":area_total})
 
 # check if data fetched successfully
 # for item in res:
@@ -43,5 +42,6 @@ with open("countries.csv","w",newline = "", encoding = "utf-8") as csvfile:
   fieldnames = ["name","capital","population","area"]
   writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
   writer.writeheader()
-  for item item in res:
+  for item in res:
     writer.writerow(item)
+
