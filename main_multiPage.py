@@ -14,7 +14,7 @@ while True:
   url = f"{BASE_URL}?page_num={page_num}"
   print(f"Fetching page {url}...")
   
-  response = requests.get{url}
+  response = requests.get(url)
   if response.status_code != 200:
     print(f"Failed to retrieve page {url}")
     break
